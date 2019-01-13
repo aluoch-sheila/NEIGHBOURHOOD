@@ -125,78 +125,78 @@ def join_hood(request,hood_id):
 	messages.success(request, 'Success! You have succesfully joined this Neighbourhood ')
 	return redirect('index')
 
-# def home(request):
-#   '''
-#   View function that renders users neighbourhood
-#   '''
-#   neighbourhoods = Neighbourhood.objects.filter(user=request.user)
-#   return render(request,'home.html',locals())
+def home(request):
+  '''
+  View function that renders users neighbourhood
+  '''
+  neighbourhoods = Neighbourhood.objects.filter(user=request.user)
+  return render(request,'home.html',locals())
 
-# @login_required(login_url='/accounts/login/')
-# def edit_hood(request,hood_id):
-# 	'''
-# 	View function that enables a user to edit his/her neighbourhood details
-# 	'''
-# 	neighbourhood = Neighbourhood.objects.get(pk = hood_id)
-# 	if request.method == 'POST':
-# 		form = AddHoodForm(request.POST,instance = neighbourhood)
-# 		if form.is_valid():
-# 			form.save()
-# 			messages.success(request, 'Neighbourhood edited successfully')
+@login_required(login_url='/accounts/login/')
+def edit_hood(request,hood_id):
+	'''
+	View function that enables a user to edit his/her neighbourhood details
+	'''
+	neighbourhood = Neighbourhood.objects.get(pk = hood_id)
+	if request.method == 'POST':
+		form = AddHoodForm(request.POST,instance = neighbourhood)
+		if form.is_valid():
+			form.save()
+			messages.success(request, 'Neighbourhood edited successfully')
 			
-# 			return redirect('index')
-# 	else:
-# 		form = AddHoodForm(instance = neighbourhood)
-# 		return render(request,'edit_hood.html',locals())
+			return redirect('index')
+	else:
+		form = AddHoodForm(instance = neighbourhood)
+		return render(request,'edit_hood.html',locals())
 
-# @login_required(login_url='/accounts/login/')
-# def leave_hood(request,id):
-#   '''
-#   Views that enables users leave a neighbourhood
-#   '''
-#   Join.objects.get(id = request.user.id).delete()
-#   return redirect('index')
+@login_required(login_url='/accounts/login/')
+def leave_hood(request,id):
+  '''
+  Views that enables users leave a neighbourhood
+  '''
+  Join.objects.get(id = request.user.id).delete()
+  return redirect('index')
 
-# @login_required(login_url='/accounts/login/')
-# def add_business(request):
-# 	'''
-# 	View function that enables users to add businesses
-# 	'''
-# 	if request.method == 'POST':
-# 		form = AddBusinessForm(request.POST)
-# 		if form.is_valid():
-# 			business = form.save(commit = False)
-# 			business.user = request.user
-# 			business.save()
-# 			messages.success(request, 'You Have succesfully created a hood.You may now join your neighbourhood')
-# 			return redirect('added_businesses')
+@login_required(login_url='/accounts/login/')
+def add_business(request):
+	'''
+	View function that enables users to add businesses
+	'''
+	if request.method == 'POST':
+		form = AddBusinessForm(request.POST)
+		if form.is_valid():
+			business = form.save(commit = False)
+			business.user = request.user
+			business.save()
+			messages.success(request, 'You Have succesfully created a hood.You may now join your neighbourhood')
+			return redirect('added_businesses')
 
-# 	else:
-# 		form = AddBusinessForm()
-# 		return render(request,'add_business.html',locals())
+	else:
+		form = AddBusinessForm()
+		return render(request,'add_business.html',locals())
 
-# @login_required(login_url='/accounts/login/')
-# def added_businesses(request):
-# 	'''
-# 	View function that returns all added user businesses
-# 	'''
-# 	businesses= Business.objects.filter(user = request.user)
-# 	return render(request,'businesses.html',locals())
+@login_required(login_url='/accounts/login/')
+def added_businesses(request):
+	'''
+	View function that returns all added user businesses
+	'''
+	businesses= Business.objects.filter(user = request.user)
+	return render(request,'businesses.html',locals())
 
-# @login_required(login_url='/accounts/login/')
-# def edit_business(request,business_id):
-# 	'''
-# 	View function that enables a user to edit his/her added businesses
-# 	'''
-# 	business = Business.objects.get(pk = business_id)
-# 	if request.method == 'POST':
-# 		form = AddBusinessForm(request.POST,instance = business)
-# 		if form.is_valid():
-# 			form.save()
-# 			return redirect('added_businesses')
-# 	else:
-# 		form = AddBusinessForm(instance = business)
-# 	return render(request,'edit_business.html',locals())
+@login_required(login_url='/accounts/login/')
+def edit_business(request,business_id):
+	'''
+	View function that enables a user to edit his/her added businesses
+	'''
+	business = Business.objects.get(pk = business_id)
+	if request.method == 'POST':
+		form = AddBusinessForm(request.POST,instance = business)
+		if form.is_valid():
+			form.save()
+			return redirect('added_businesses')
+	else:
+		form = AddBusinessForm(instance = business)
+	return render(request,'edit_business.html',locals())
 
 # @login_required(login_url='/accounts/login/')
 # def profile(request):
