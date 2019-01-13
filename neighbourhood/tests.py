@@ -116,31 +116,31 @@ class BusinessTestClass(TestCase):
         self.business.save_business()
         new_business = Business.objects.filter(name='kazi').update(name='kazini')
 
-# class PostsTestClass(TestCase):
-#     '''
-#     Test Posts class and its methods and functions
-#     '''
-#     def setUp(self):
-#         self.user = User.objects.create(id =1, username='test')
-#         self.neighbourhood = Neighbourhood(name='kejani', location='pale', user=self.user)
-#         self.neighbourhood.save_neighbourhood()
-#         self.post = Posts(post="hii post", user=self.user, hood=self.neighbourhood)
+class PostsTestClass(TestCase):
+    '''
+    Test Posts class and its methods and functions
+    '''
+    def setUp(self):
+        self.user = User.objects.create(id =1, username='test')
+        self.neighbourhood = Neighbourhood(name='kejani', location='pale', user=self.user)
+        self.neighbourhood.save_neighbourhood()
+        self.post = Posts(post="hii post", user=self.user, hood=self.neighbourhood)
 
-#     def test_instance(self):
-#         self.assertTrue(isinstance(self.post, Posts))
+    def test_instance(self):
+        self.assertTrue(isinstance(self.post, Posts))
 
     
-#     def test_save_method(self):
-#         '''
-#         Function that tests whether a post is being saved
-#         '''
-#         self.post.save_posts()
-#         posts = Posts.objects.all()
-#         self.assertTrue(len(posts) > 0)
+    def test_save_method(self):
+        '''
+        Function that tests whether a post is being saved
+        '''
+        self.post.save_posts()
+        posts = Posts.objects.all()
+        self.assertTrue(len(posts) > 0)
 
-#     def test_delete_method(self):
-#         '''
-#         Function that tests whether a neighbourhood can be deleted
-#         '''
-#         self.post.save_posts()
-#         self.post.delete_posts()
+    def test_delete_method(self):
+        '''
+        Function that tests whether a neighbourhood can be deleted
+        '''
+        self.post.save_posts()
+        self.post.delete_posts()
