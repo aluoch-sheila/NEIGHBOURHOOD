@@ -19,13 +19,13 @@ class AddHoodForm(forms.ModelForm):
     exclude = ['posted_on']
 
 
-# class AddBusinessForm(forms.ModelForm):
-# 	'''
-#   Form class that enables a user create a business in the neighbourhood
-# 	'''
-# 	class Meta:
-# 		model = Business
-# 		fields = ['name','email','description']
+class AddBusinessForm(forms.ModelForm):
+	'''
+  Form class that enables a user create a business in the neighbourhood
+	'''
+	class Meta:
+		model = Business
+		fields = ['name','email','description']
 
 # class UpdateProfileForm(forms.ModelForm):
 #   '''
