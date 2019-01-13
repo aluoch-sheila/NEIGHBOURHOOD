@@ -27,13 +27,13 @@ class AddBusinessForm(forms.ModelForm):
 		model = Business
 		fields = ['name','email','description']
 
-# class UpdateProfileForm(forms.ModelForm):
-#   '''
-#   Form class that enables a users update their profiles
-#   '''
-#   class Meta:
-#     model = Profile
-#     fields = ['bio']
+class UpdateProfileForm(forms.ModelForm):
+  '''
+  Form class that enables a users update their profiles
+  '''
+  class Meta:
+    model = Profile
+    fields = ['bio']
 
 # class PostForm(forms.ModelForm):
 #   '''
