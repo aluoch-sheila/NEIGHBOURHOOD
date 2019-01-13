@@ -80,41 +80,41 @@ class ProfileTestClass(TestCase):
 
 
 
-# class BusinessTestClass(TestCase):
-#     '''
-#     Test Business class and its methods and functions
-#     '''
-#     def setUp(self):
-#         self.user = User.objects.create(id =1, username='test')
-#         self.neighbourhood = Neighbourhood(name='kejani', location='pale', user=self.user)
-#         self.neighbourhood.save_neighbourhood()
-#         self.business = Business(name="kazi", email="kazi@gmail.com", user=self.user, neighbourhood=self.neighbourhood)
+class BusinessTestClass(TestCase):
+    '''
+    Test Business class and its methods and functions
+    '''
+    def setUp(self):
+        self.user = User.objects.create(id =1, username='test')
+        self.neighbourhood = Neighbourhood(name='kejani', location='pale', user=self.user)
+        self.neighbourhood.save_neighbourhood()
+        self.business = Business(name="kazi", email="kazi@gmail.com", user=self.user, neighbourhood=self.neighbourhood)
 
-#     def test_instance(self):
-#         self.assertTrue(isinstance(self.business, Business))
+    def test_instance(self):
+        self.assertTrue(isinstance(self.business, Business))
 
     
-#     def test_save_method(self):
-#         '''
-#         Function to test that neighbourhood is being saved
-#         '''
-#         self.business.save_business()
-#         businesses = Business.objects.all()
-#         # self.assertTrue(len(businesses) > 0)
+    def test_save_method(self):
+        '''
+        Function to test that neighbourhood is being saved
+        '''
+        self.business.save_business()
+        businesses = Business.objects.all()
+        # self.assertTrue(len(businesses) > 0)
 
-#     def test_delete_method(self):
-#         '''
-#         Function that tests whether a neighbourhood can be deleted
-#         '''
-#         self.business.save_business()
-#         self.business.delete_business()
+    def test_delete_method(self):
+        '''
+        Function that tests whether a neighbourhood can be deleted
+        '''
+        self.business.save_business()
+        self.business.delete_business()
 
-#     def test_update_method(self):
-#         '''
-#         Function that tests whether a neighbourhood's details can be updated
-#         '''
-#         self.business.save_business()
-#         new_business = Business.objects.filter(name='kazi').update(name='kazini')
+    def test_update_method(self):
+        '''
+        Function that tests whether a neighbourhood's details can be updated
+        '''
+        self.business.save_business()
+        new_business = Business.objects.filter(name='kazi').update(name='kazini')
 
 # class PostsTestClass(TestCase):
 #     '''
