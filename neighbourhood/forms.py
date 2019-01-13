@@ -9,14 +9,14 @@ class SignupForm(UserCreationForm):
         model = User
         fields = ('username', 'email', 'password1', 'password2')
 
-# class AddHoodForm(forms.ModelForm):
-#   '''
-#   Form class that enables a user create a neighbourhood
-#   '''
-#   class Meta:
-#     model = Neighbourhood
-#     fields = ['name','location','description','police_dept','health_dept']
-#     exclude = ['posted_on']
+class AddHoodForm(forms.ModelForm):
+  '''
+  Form class that enables a user create a neighbourhood
+  '''
+  class Meta:
+    model = Neighbourhood
+    fields = ['name','location','description','police_dept','health_dept']
+    exclude = ['posted_on']
 
 
 # class AddBusinessForm(forms.ModelForm):
