@@ -1,4 +1,4 @@
-<!-- {%extends 'base.html' %}
+{%extends 'base.html' %}
 {% load static%}
 
 {% block styles%}
@@ -32,7 +32,7 @@
                     <p>{{neighbourhood.description}}</p>
                     <p><b>Location: </b>{{neighbourhood.location}}</p>
                 </div>
-                <div class="card-footer">
+                <!-- <div class="card-footer">
                     <a href="{% url 'join_hood' neighbourhood.id %}" class="btn btn-primary btn-sm">Join Hood</a>
                     {% if neighbourhood.user_id == user.id %}
                     <a href="{% url 'edit_hood' neighbourhood.id %}" class="btn btn-sm btn-info"><i class="fas fa-edit"></i></a>
@@ -40,11 +40,11 @@
                     {% if neighbourhood.user_id == user.id %}
                     <a href="{% url 'delete_hood' neighbourhood.id %}" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></a>
                     {% endif %}
-                </div>
+                </div> -->
             </div>
         </div>
         {% endfor %}
         {% endif %}
     </div>
 </div>
-{% endblock%} -->
+{% endblock%}
