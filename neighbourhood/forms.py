@@ -35,10 +35,10 @@ class UpdateProfileForm(forms.ModelForm):
     model = Profile
     fields = ['bio']
 
-# class PostForm(forms.ModelForm):
-#   '''
-#   Form class that enables a user post in a neighbourhood
-#   '''
-#   class Meta:
-#     model = Posts
-#     fields = ['topic','post']
+class PostForm(forms.ModelForm):
+  '''
+  Form class that enables a user post in a neighbourhood
+  '''
+  class Meta:
+    model = Posts
+    fields = ['topic','post']
