@@ -198,115 +198,115 @@ def edit_business(request,business_id):
 		form = AddBusinessForm(instance = business)
 	return render(request,'edit_business.html',locals())
 
-# @login_required(login_url='/accounts/login/')
-# def profile(request):
-# 	'''
-# 	View profile that renders a user's profile page
-# 	'''
-# 	profile = Profile.objects.get(user = request.user)
+@login_required(login_url='/accounts/login/')
+def profile(request):
+	'''
+	View profile that renders a user's profile page
+	'''
+	profile = Profile.objects.get(user = request.user)
   
-# 	return render(request,'profile/profile.html',locals())
+	return render(request,'profile/profile.html',locals())
 
-# @login_required(login_url='/accounts/login/')
-# def update_profile(request):
-# 	'''
-# 	View function that enables a user to update their profile
-# 	'''
-# 	profile = Profile.objects.get(user = request.user)
-# 	if request.method == 'POST':
-# 		form = UpdateProfileForm(request.POST,instance = profile )
-# 		if form.is_valid():
-# 			form.save()
-# 			messages.success(request, 'Successful profile edit!')
-# 			return redirect('profile')
-# 	else:
-# 		form = UpdateProfileForm(instance = profile )
-# 		return render(request,'profile/update_profile.html',locals())
+@login_required(login_url='/accounts/login/')
+def update_profile(request):
+	'''
+	View function that enables a user to update their profile
+	'''
+	profile = Profile.objects.get(user = request.user)
+	if request.method == 'POST':
+		form = UpdateProfileForm(request.POST,instance = profile )
+		if form.is_valid():
+			form.save()
+			messages.success(request, 'Successful profile edit!')
+			return redirect('profile')
+	else:
+		form = UpdateProfileForm(instance = profile )
+		return render(request,'profile/update_profile.html',locals())
 
-# @login_required(login_url='/accounts/login/')
-# def add_post(request):
-#   '''
-#   View function that enables a user to create a post in a neighbourhood
-#   '''
-#   if Join.objects.filter(user_id=request.user).exists():
-#     if request.method == 'POST':
-#       form = PostForm(request.POST)
-#       if form.is_valid():
-#         post = form.save(commit=False)
-#         post.user = request.user
-#         post.hood = request.user.join.hood_id
-#         post.save()
-#         return redirect('index')
+@login_required(login_url='/accounts/login/')
+def add_post(request):
+  '''
+  View function that enables a user to create a post in a neighbourhood
+  '''
+  if Join.objects.filter(user_id=request.user).exists():
+    if request.method == 'POST':
+      form = PostForm(request.POST)
+      if form.is_valid():
+        post = form.save(commit=False)
+        post.user = request.user
+        post.hood = request.user.join.hood_id
+        post.save()
+        return redirect('index')
 
-#     else:
-#       form = PostForm()
-#       return render(request,'add_post.html',locals())
-#   else:
-#     messages.error(request,'Error!!Post can only be added after joining a neighbourhood!')
-#     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    else:
+      form = PostForm()
+      return render(request,'add_post.html',locals())
+  else:
+    messages.error(request,'Error!!Post can only be added after joining a neighbourhood!')
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
-# def posts(request):
-#   '''
-#   View function that renders the posts page
-#   '''
-#   posts = Posts.objects.filter(user = request.user)
-#   return render(request,'posts.html',locals())
+def posts(request):
+  '''
+  View function that renders the posts page
+  '''
+  posts = Posts.objects.filter(user = request.user)
+  return render(request,'posts.html',locals())
 
-# @login_required(login_url='/accounts/login')
-# def edit_post(request,post_id):
-#   '''
-#   View function that enables users edit their posts
-#   '''
-#   if Join.objects.filter(user_id=request.user).exists():
-#     post = Posts.objects.get(id=post_id)
-#     if request.method == 'POST':
-#       form = PostForm(request.POST,instance = post)
-#       if form.is_valid():
-#         post = form.save(commit=False)
-#         post.user = request.user
-#         post.hood = request.user.join.hood_id
-#         post.save()
-#         return redirect('posts')
-#     else:
-#       form = PostForm(instance = post)
-#       return render(request,'edit_post.html',locals())
+@login_required(login_url='/accounts/login')
+def edit_post(request,post_id):
+  '''
+  View function that enables users edit their posts
+  '''
+  if Join.objects.filter(user_id=request.user).exists():
+    post = Posts.objects.get(id=post_id)
+    if request.method == 'POST':
+      form = PostForm(request.POST,instance = post)
+      if form.is_valid():
+        post = form.save(commit=False)
+        post.user = request.user
+        post.hood = request.user.join.hood_id
+        post.save()
+        return redirect('posts')
+    else:
+      form = PostForm(instance = post)
+      return render(request,'edit_post.html',locals())
 
-#   else:
-#     messages.error(request,'You cannot edit this post...Join a neighbourhood first')
-#     return HttpResponseRedirect(request.META.get('HTTP REFERER'))  
+  else:
+    messages.error(request,'You cannot edit this post...Join a neighbourhood first')
+    return HttpResponseRedirect(request.META.get('HTTP REFERER'))  
 
-# @login_required(login_url='/accounts/login/')
-# def search_results(request):
+@login_required(login_url='/accounts/login/')
+def search_results(request):
 
-#     if 'neighbourhood' in request.GET and request.GET["neighbourhood"]:
-#         search_term = request.GET.get("neighbourhood")
-#         searched_neighbourhoods = Neighbourhood.search_by_title(search_term)
-#         message = f"{search_term}"
+    if 'neighbourhood' in request.GET and request.GET["neighbourhood"]:
+        search_term = request.GET.get("neighbourhood")
+        searched_neighbourhoods = Neighbourhood.search_by_title(search_term)
+        message = f"{search_term}"
 
-#         return render(request, 'search.html',{"message":message,"neighbourhood": searched_neighbourhoods})
+        return render(request, 'search.html',{"message":message,"neighbourhood": searched_neighbourhoods})
 
-#     else:
-#         message = "You haven't searched for any neighbourhood"
-#         return render(request, 'search.html',{"message":message})
+    else:
+        message = "You haven't searched for any neighbourhood"
+        return render(request, 'search.html',{"message":message})
 
-# def delete_hood(request,hood_id):
-#   '''
-#   View function that enables deletion of hoods
-#   '''
-#   Neighbourhood.objects.filter(pk=hood_id).delete()
-#   messages.error(request,'Neighbourhood has been deleted successfully')
-#   return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+def delete_hood(request,hood_id):
+  '''
+  View function that enables deletion of hoods
+  '''
+  Neighbourhood.objects.filter(pk=hood_id).delete()
+  messages.error(request,'Neighbourhood has been deleted successfully')
+  return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
-# def delete_post(request,post_id):
-#   '''
-#   View function that enables a post to be deleted
-#   '''
-#   Posts.objects.filter(pk=post_id).delete()
-#   return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+def delete_post(request,post_id):
+  '''
+  View function that enables a post to be deleted
+  '''
+  Posts.objects.filter(pk=post_id).delete()
+  return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
-# def delete_business(request,business_id):
-#   '''
-#   View function that enables a business to be deleted
-#   '''
-#   Business.objects.filter(pk=business_id).delete()
-#   return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+def delete_business(request,business_id):
+  '''
+  View function that enables a business to be deleted
+  '''
+  Business.objects.filter(pk=business_id).delete()
+  return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
