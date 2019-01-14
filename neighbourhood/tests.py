@@ -144,3 +144,4 @@ class PostsTestClass(TestCase):
         '''
         self.post.save_posts()
         self.post.delete_posts()
+
