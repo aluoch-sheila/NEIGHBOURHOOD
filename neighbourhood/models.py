@@ -31,8 +31,8 @@ class Neighbourhood(models.Model):
   location = models.CharField(max_length=30,choices=NEIGHBOURHOOD_CHOICES)
   description = models.TextField(blank=True,null=True)
   posted_on = models.DateTimeField(auto_now_add=True)
-  police_dept = models.IntegerField(default="0722445233")
-  health_dept = models.IntegerField(default="0700505221")
+  police_dept = models.IntegerField(default="0711821055")
+  health_dept = models.IntegerField(default="0723227987")
   user = models.ForeignKey(User, on_delete=models.CASCADE,blank=True,null=True)
 
   def save_neighbourhood(self):

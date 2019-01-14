@@ -9,10 +9,14 @@
     <div class="col-xs-12 col-sm-6 col-md-12 contents">
         <div class="container image">
             <form class="form" role="search" action="{% url 'search_results' %}">
-
+                <div class="container" style="background-image:url(https://res.cloudinary.com/maa/image/upload/c_lfill,g_auto,f_auto,h_525,w_1144/v1/maac/-/media/images/properties/south-carolina/greenville/innovation/slides/1nnovation_pool5-min.jpg);background-repeat: no-repeat; width: 100%; height: 500px;">
                 <div class="input-group">
+                    <!-- <br>
+                    <br>
+                    <br> -->
                     <input type="text" class="form-control input" placeholder=" Search Neighbourhood" name="neighbourhood">&nbsp;&nbsp;
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="button"><i class="fas fa-search"></i></button>
+                </div>
                 </div>
                 <br>
 
@@ -39,7 +43,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-4" style="width:100% !important;">
                     <div class="card" style="width:100% !important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
 
-                        <div class="card-body">
+                        <div class="card-body" style="background-image:url();">
                             <p style="font-weight:bolder;text-decoration-line: underline;">{{neighbourhood.name}}({{neighbourhood.location}})</p>
                             <p>{{neighbourhood.description.capitalize}}</p>
                         </div>

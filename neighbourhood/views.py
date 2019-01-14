@@ -59,7 +59,7 @@ def search_business(request):
 #             user.is_active = False
 #             user.save()
 #             current_site = get_current_site(request)
-#             mail_subject = 'Activate your Hoodwatch account.'
+#             mail_subject = 'Activate your neighbourhood watch account.'
 #             message = render_to_string('registration/activate_account.html', {
 #                 'user': user,
 #                 'domain': current_site.domain,
