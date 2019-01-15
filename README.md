@@ -1,6 +1,6 @@
 # Neighbourhood
 
- This is a web application that allows one to be in the loop about everything happening in his/her neighborhood from contact information of different meeting announcements or even alerts.This application was created on 22th October 2018
+ This is a web application that allows one to be in the loop about everything happening in his/her neighborhood from contact information of different meeting announcements or even alerts.
 
 # Author
 Aluoch Sheila
