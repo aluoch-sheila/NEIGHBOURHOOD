@@ -19,7 +19,7 @@ Aluoch Sheila
 - Create the Database
     -On the terminal,run `psql`
     - Create a database by typing 
-      `CREATE DATABASE hood;` for example.
+      `CREATE DATABASE neighbour;` for example.
 
 - Create a .env file and add the following:
 
